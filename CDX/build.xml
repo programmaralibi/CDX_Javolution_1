@@ -1,0 +1,474 @@
+<project name="RCD-ales" default="help" basedir=".">
+  <description>
+    Real-time Collision Detector
+  </description>
+  
+	
+	
+	
+	
+  <property name="ant.build.javac.source" value="1.4"/>
+  <property name="ant.build.javac.target" value="1.4"/>
+  <property name="rcd.debug" value="true"/>  
+  <property name="rcd.debuglevel" value="source"/>  
+  <property name="rcd.verbose" value="false"/>    
+  
+  <!-- set global properties for this build -->
+  <property name="src" location="src"/>
+  <property name="build" location="build"/>
+  <property name="dist" location="dist"/>
+  <property name="rt" value="default"/>
+
+  <property name="jars" value="dist/lib"/>	
+	
+	
+	
+	
+	
+	
+  <target name="help">
+    <echo level="info">
+----------------------------
+Real-time Collision Detector
+----------------------------
+
+Quick info:
+  for non-RTSJ, do "ant dist"
+  for RTSJ with WebSphere RT, do "ant -Drt=wrt dist" 
+  for RTSJ with Sun RTS, do "ant -Drt=rts dist"
+
+This distribution includes both RTSJ and non-RTSJ version of the benchmark.
+The core part of the benchmark (built into detector.jar) can be run both by
+RTSJ and non-RTSJ VM: it needs a thread API implementation (java_threads.jar
+or rtsj_threads.jar) and a memory API implementation (java_memory.jar or
+rtsj_memory.jar). 
+
+The supported targets are as usual: dist, compile, clean. Dist actually
+creates the jar files. Target init will just print the configuration.
+
+For non-RTSJ deployment, no additional arguments to ant have to be
+specified. Files java_threads.jar and java_memory.jar will be built.
+
+For RTSJ deployment, an RTSJ Java compiler has to be specified by
+"-Drt=compiler", where supported values for compiler are "rts", "wrt", and
+"srt". This will build all supported versions of the jar files:
+java_threads.jar, rtsj_threads.jar, java_memory.jar, rtsj_memory.jar. 
+
+These combinations can actually be run:
+
+--------------------
+| Memory | Threads |
+--------------------
+| RTSJ   | RTSJ    |
+| Java   | RTSJ    |
+| Java   | Java    |
+--------------------
+
+Note that RTSJ memory and Java threads cannot be used together, because RTSJ
+does not allow non-RTSJ threads to enter immortal or scoped memory.
+
+Supported compilers (-Drt=compiler):
+
+  default   build non-RTSJ code using default Java compiler
+  srt    build non-RTSJ code using external Java compiler  
+  rts    build RTSJ and non-RTSJ code using Sun RTS
+  wrt    build RTSJ and non-RTSJ code using IBM WebSphere RT, with "-Xrealtime" argument
+  
+Paths to compilers are in compiler.properties files, for each compiler.
+    </echo>
+  </target>
+
+	
+	
+	
+	
+  <target name="init">
+    <!-- Create the time stamp -->
+    <tstamp/>
+
+    <property file="properties/${rt}.properties"/>
+
+  	<property name="javac" value="${rcd.java_home}/bin/javac"/>	
+  	<property name="java" value="${rcd.java_home}/bin/java"/>	
+  	
+    <echo>
+Building for ${rcd.name}:
+    
+rt=${rt}
+name=${rcd.name}
+fork=${rcd.fork}
+java_home=${rcd.java_home}
+rtsj=${rcd.rtsj}
+java=${java}
+javac=${javac}
+    </echo>
+
+    <!-- Create the build directory structure used by compile -->
+    <mkdir dir="${build}"/>
+    <mkdir dir="${build}/utils"/>    
+    <mkdir dir="${build}/common_realtime"/>    
+  </target>
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+  <target name="compile_nrt" depends="init"
+        description="compile the non-RTSJ sources" >
+
+    <mkdir dir="${build}/java_memory"/>    
+    <mkdir dir="${build}/java_threads"/>    
+    <mkdir dir="${build}/detector"/>        
+    <mkdir dir="${build}/simulator"/>        
+    <mkdir dir="${build}/binary_dump_reader"/>        
+    <mkdir dir="${build}/main"/>        
+    <mkdir dir="${build}/precompiled_simulator"/> 
+  	<mkdir dir="${build}/tools"/>
+  	
+    <!-- Compile the java code from ${src} into ${build} -->
+    <javac srcdir="${src}/utils" destdir="${build}/utils" 
+    	debug="${rcd.debug}" debuglevel="${rcd.debuglevel}" verbose="${rcd.verbose}"
+		fork="${rcd.fork}" executable="${javac}"
+    	>    
+    	<compilerarg line="${rcd.compilerarg}" compiler="${rcd.compiler}"/>
+    </javac>
+  
+    <javac srcdir="${src}/tools" destdir="${build}/tools" 
+     	debug="${rcd.debug}" debuglevel="${rcd.debuglevel}" verbose="${rcd.verbose}"
+ 		fork="${rcd.fork}" executable="${javac}"
+     	>    
+     	<compilerarg line="${rcd.compilerarg}" compiler="${rcd.compiler}"/>
+    </javac>
+  	
+    <javac srcdir="${src}/common_realtime" destdir="${build}/common_realtime" 
+    	debug="${rcd.debug}" debuglevel="${rcd.debuglevel}" verbose="${rcd.verbose}"
+    	fork="${rcd.fork}" executable="${javac}"
+    	>        
+    	<compilerarg value="${rcd.compilerarg}" compiler="${rcd.compiler}"/>
+    </javac>
+    
+    <javac srcdir="${src}/java_memory" destdir="${build}/java_memory" 
+    	debug="${rcd.debug}" debuglevel="${rcd.debuglevel}" verbose="${rcd.verbose}"
+    	fork="${rcd.fork}" executable="${javac}"
+    	>
+    	<compilerarg value="${rcd.compilerarg}" compiler="${rcd.compiler}"/>
+    	<classpath>
+    		<pathelement path="${build}/utils"/>
+    		<pathelement path="${build}/common_realtime"/>
+    	</classpath>
+    </javac>
+    
+    <javac srcdir="${src}/java_threads" destdir="${build}/java_threads"
+    	debug="${rcd.debug}" debuglevel="${rcd.debuglevel}" verbose="${rcd.verbose}"
+    	fork="${rcd.fork}" executable="$javac}"
+    	>
+    	<compilerarg value="${rcd.compilerarg}" compiler="${rcd.compiler}"/>
+    	<classpath>
+    		<pathelement path="${build}/utils"/>
+    		<pathelement path="${build}/common_realtime"/>
+    		<pathelement path="${build}/java_memory"/>    		
+    	</classpath>    
+    </javac>
+    
+    <javac srcdir="${src}/detector" destdir="${build}/detector"
+    	debug="${rcd.debug}" debuglevel="${rcd.debuglevel}" verbose="${rcd.verbose}"
+    	fork="${rcd.fork}" executable="${javac}"
+    	>
+    	<compilerarg value="${rcd.compilerarg}" compiler="${rcd.compiler}"/>
+    	<classpath>
+    		<pathelement path="${build}/utils"/>
+    		<pathelement path="${build}/common_realtime"/>
+    		<pathelement path="${build}/java_memory"/>    	
+    		<pathelement path="${build}/java_threads"/>    	
+    	</classpath>    
+    </javac>        
+  
+    <javac srcdir="${src}/simulator" destdir="${build}/simulator"
+      	debug="${rcd.debug}" debuglevel="${rcd.debuglevel}" verbose="${rcd.verbose}"
+      	fork="${rcd.fork}" executable="${javac}"
+      	excludes="command/java_cup/**"
+      	includes="command/java_cup/runtime/**"
+      	>
+      	<include name="**"/>
+      	<exclude name="command/java_cup/**"/>
+      	<include name="command/java_cup/runtime/**"/>
+      	<compilerarg value="${rcd.compilerarg}" compiler="${rcd.compiler}"/>
+      	<classpath>
+      		<pathelement path="${build}/utils"/>
+      		<pathelement path="${build}/common_realtime"/>
+      		<pathelement path="${build}/java_threads"/>
+      		<pathelement path="${build}/detector"/>
+      	</classpath>    
+    </javac>
+  	
+  	<javac srcdir="${src}/main" destdir="${build}/main"
+  	    debug="${rcd.debug}" debuglevel="${rcd.debuglevel}" verbose="${rcd.verbose}"
+  	    fork="${rcd.fork}" executable="${javac}"
+  	    >
+  	    <compilerarg value="${rcd.compilerarg}" compiler="${rcd.compiler}"/>
+  	    <classpath>
+  	  		<pathelement path="${build}/detector"/>
+  	        <pathelement path="${build}/simulator"/>
+    		<pathelement path="${build}/common_realtime"/>
+      		<pathelement path="${build}/java_threads"/>
+    		<pathelement path="${build}/java_memory"/>    	
+  	    </classpath>    
+  	 </javac>        
+  	    
+  	
+    <javac srcdir="${src}/binary_dump_reader" destdir="${build}/binary_dump_reader"
+       	debug="${rcd.debug}" debuglevel="${rcd.debuglevel}" verbose="${rcd.verbose}"
+        fork="${rcd.fork}" executable="${javac}"
+        >
+        <compilerarg value="${rcd.compilerarg}" compiler="${rcd.compiler}"/>
+        <classpath>
+        	<pathelement path="${build}/detector"/>
+         </classpath>    
+    </javac>        
+  
+    <javac srcdir="${src}/precompiled_simulator" destdir="${build}/precompiled_simulator"
+         	debug="${rcd.debug}" debuglevel="${rcd.debuglevel}" verbose="${rcd.verbose}"
+          fork="${rcd.fork}" executable="${javac}"
+          >
+          <compilerarg value="${rcd.compilerarg}" compiler="${rcd.compiler}"/>
+          <classpath>
+          	<pathelement path="${build}/detector"/>
+           </classpath>    
+    </javac>        
+  	
+  </target>
+
+  <target name="compile_rt" depends="init,compile_nrt"
+        description="compile RTSJ sources" if="rcd.rtsj">
+    <!-- Compile the java code from ${src} into ${build} -->
+
+    <mkdir dir="${build}/rtsj_memory"/>    
+    <mkdir dir="${build}/rtsj_threads"/>    
+    
+    <javac srcdir="${src}/rtsj_memory" destdir="${build}/rtsj_memory" 
+    	debug="${rcd.debug}" debuglevel="${rcd.debuglevel}" verbose="${rcd.verbose}"
+    	fork="${rcd.fork}" executable="${javac}"
+    	>
+    	<compilerarg value="${rcd.compilerarg}" compiler="${rcd.compiler}"/>
+    	<classpath>
+    		<pathelement path="${build}/utils"/>
+    		<pathelement path="${build}/common_realtime"/>
+    	</classpath>
+    </javac>
+    
+    <javac srcdir="${src}/rtsj_threads" destdir="${build}/rtsj_threads"
+    	debug="${rcd.debug}" debuglevel="${rcd.debuglevel}" verbose="${rcd.verbose}"
+    	fork="${rcd.fork}" executable="${javac}"
+    	>
+    	<compilerarg value="${rcd.compilerarg}" compiler="${rcd.compiler}"/>
+    	<classpath>
+    		<pathelement path="${build}/utils"/>
+    		<pathelement path="${build}/common_realtime"/>
+    		<pathelement path="${build}/rtsj_memory"/>    		
+    	</classpath>    
+    </javac>
+    
+
+  </target>
+
+	
+	
+	
+  <target name="compile" depends="init,compile_nrt, compile_rt"
+        description="compile the sources"/>
+        
+	
+	
+	
+	
+	
+  <target name="dist_nrt" depends="compile_nrt"
+        description="generate the distribution for non-RTSJ code" >
+    <!-- Create the distribution directory -->
+    <mkdir dir="${dist}/lib"/>
+
+    <!-- Put everything in ${build} into the MyProject-${DSTAMP}.jar file -->
+    <jar jarfile="${dist}/lib/utils.jar" basedir="${build}/utils"/>
+    <jar jarfile="${dist}/lib/common_realtime.jar" basedir="${build}/common_realtime"/>    
+    <jar jarfile="${dist}/lib/java_memory.jar" basedir="${build}/java_memory"/>    
+    <jar jarfile="${dist}/lib/java_threads.jar" basedir="${build}/java_threads"/>    
+    <jar jarfile="${dist}/lib/detector.jar" basedir="${build}/detector"/>     
+  	<jar jarfile="${dist}/lib/simulator.jar" basedir="${build}/simulator"/>
+  	<jar jarfile="${dist}/lib/binary_dump_reader.jar" basedir="${build}/binary_dump_reader"/> 
+  	<jar jarfile="${dist}/lib/main.jar" basedir="${build}/main"/> 
+ 	<jar jarfile="${dist}/lib/precompiled_simulator.jar" basedir="${build}/precompiled_simulator"/> 	
+  	<jar jarfile="${dist}/lib/tools.jar" basedir="${build}/tools"/>
+  </target>
+
+	
+	
+	
+	
+  <target name="dist_rt" depends="dist_nrt,compile_rt"
+        description="generate the distribution for RTSJ code" if="rcd.rtsj">
+    <!-- Create the distribution directory -->
+    <mkdir dir="${dist}/lib"/>
+
+    <!-- Put everything in ${build} into the MyProject-${DSTAMP}.jar file -->
+    <jar jarfile="${dist}/lib/rtsj_memory.jar" basedir="${build}/rtsj_memory"/>    
+    <jar jarfile="${dist}/lib/rtsj_threads.jar" basedir="${build}/rtsj_threads"/>    
+  </target>
+
+	
+	
+	
+	
+  <target name="dist" depends="init,dist_nrt,dist_rt"
+        description="generate the distribution"/>
+  
+	
+	
+	
+	
+	
+	<target name="run_default" depends="init,dist"
+		 description="Executes the default configuration for test.">
+	     
+		<echo>
+			Running with jvm=${java}, java threads and java memory. As the input we take "input/test" file. 
+	    </echo>
+		
+		<java classname="heap/Main"
+		        fork="yes" >
+		    <arg line="input/test MAX_FRAMES 400 PERSISTENT_DETECTOR_SCOPE_SIZE 500000 TRANSIENT_DETECTOR_SCOPE_SIZE 600000 PERIOD 50 DETECTOR_PRIORITY 9 TIME_SCALE 1 FRAMES_BINARY_DUMP DUMP_SENT_FRAMES"/>
+		    <jvmarg value="-Xms40m"/>
+			<jvmarg value="-Xmx40m"/>
+			<classpath>
+			    <pathelement path="${jars}/common_realtime.jar"/>
+				<pathelement path="${jars}/utils.jar"/>
+				<pathelement path="${jars}/java_memory.jar"/>
+				<pathelement path="${jars}/java_threads.jar"/>
+				<pathelement path="${jars}/detector.jar"/>
+				<pathelement path="${jars}/simulator.jar"/>
+				<pathelement path="${jars}/main.jar"/>
+			</classpath>
+		</java>
+	</target>
+	
+	<target name="run_from_dump_default" depends="init,dist"
+			 description="Executes the from_dump_default configuration for test.">
+		     
+			<echo>
+				Running with jvm=${java},java threads and java memory. As the input we take "input/test.bin" file. 
+		    </echo>
+			
+			<java classname="heap/Main"
+			        fork="yes" jvm="${java}" >
+			    <arg line="input/test.bin MAX_FRAMES 400 PERSISTENT_DETECTOR_SCOPE_SIZE 500000 TRANSIENT_DETECTOR_SCOPE_SIZE 600000 PERIOD 50 DETECTOR_PRIORITY 9 TIME_SCALE 1 FRAMES_BINARY_DUMP DUMP_SENT_FRAMES "/>
+			    <jvmarg value="-Xms40m"/>
+				<jvmarg value="-Xmx40m"/>
+				<classpath>
+				    <pathelement path="${jars}/common_realtime.jar"/>
+					<pathelement path="${jars}/utils.jar"/>
+					<pathelement path="${jars}/java_memory.jar"/>
+					<pathelement path="${jars}/java_threads.jar"/>
+					<pathelement path="${jars}/detector.jar"/>
+					<pathelement path="${jars}/binary_dump_reader.jar"/>
+					<pathelement path="${jars}/main.jar"/>
+				</classpath>
+			</java>
+	</target>
+	
+	
+	<target name="run_from_precompiled" depends="init,dist"
+				 description="Executes the run_from_precompiled configuration for test.">
+			     
+				<echo>
+					Running with jvm=${java}, java threads and java memory. As the input we take "unused" file. 
+			    </echo>
+				
+				<java classname="heap/Main"
+				        fork="yes" jvm="${java}" >
+				    <arg line="unused MAX_FRAMES 400 PERSISTENT_DETECTOR_SCOPE_SIZE 500000 TRANSIENT_DETECTOR_SCOPE_SIZE 600000 PERIOD 50 DETECTOR_PRIORITY 9 TIME_SCALE 1"/>
+				    <jvmarg value="-Xms40m"/>
+					<jvmarg value="-Xmx40m"/>
+					<classpath>
+					    <pathelement path="${jars}/common_realtime.jar"/>
+						<pathelement path="${jars}/utils.jar"/>
+						<pathelement path="${jars}/java_memory.jar"/>
+						<pathelement path="${jars}/java_threads.jar"/>
+						<pathelement path="${jars}/detector.jar"/>
+						<pathelement path="${jars}/precompiled_simulators.jar"/>
+						<pathelement path="${jars}/main.jar"/>
+					</classpath>
+				</java>
+	</target>
+		
+	
+	<target name="run_easy" depends="init,dist"
+		 description="Executes the run_easy configuration for test.">
+		
+		<echo>
+		  Running with jvm=${java}, rtsj threads and rtsj memory. As the input we take "input/easy.bin" file. 
+		</echo>
+			
+		<java classname="heap/Main"
+		    fork="yes"
+			jvm="${java}">
+		    <arg line="input/easy.bin MAX_FRAMES 20000 PERIOD 4 SIMULATOR_PRIORITY 1 DETECTOR_PRIORITY 20 BUFFER_FRAMES 20000 PRESIMULATE DETECTOR_STARTUP_OFFSET_MILLIS 1000 USE_SPEC_NOISE DETECTOR_NOISE DETECTOR_NOISE_ALLOCATE_POINTERS 20 DETECTOR_NOISE_VARIABLE_ALLOCATION_SIZE"/>
+			<jvmarg value="-server"/>
+		    <jvmarg value="-d32"/>
+			<jvmarg value="-Xms40m"/>
+			<jvmarg value="-Xmx40m"/>
+			<jvmarg value="-XX:RTGCCriticalReservedBytes=600m"/>
+			<jvmarg value="-XX:RTGCCriticalPriority=15c"/>
+			<classpath>
+				<pathelement path="${jars}/common_realtime.jar"/>
+				<pathelement path="${jars}/utils.jar"/>
+			    <pathelement path="${jars}/rtsj_memory.jar"/>
+				<pathelement path="${jars}/rtsj_threads.jar"/>
+				<pathelement path="${jars}/detector.jar"/>
+				<pathelement path="${jars}/binary_dump_reader.jar"/>
+				<pathelement path="${jars}/main.jar"/>
+			</classpath>
+		</java>
+	</target>
+	
+		
+		
+		
+		
+	<target name="run_hard" depends="init,dist"
+		 description="Executes the run_hard configuration for test.">
+				
+		<echo>
+		  Running with jvm=${java}, rtsj threads and rtsj memory. As the input we take "input/hard.bin" file. 
+		</echo>
+			
+		<java classname="heap/Main"
+		    fork="yes"
+			jvm="${java}">
+		    <arg line="hard.bin MAX_FRAMES 10000 PERIOD 10 SIMULATOR_PRIORITY 1 DETECTOR_PRIORITY 20 BUFFER_FRAMES 10000 PRESIMULATE DETECTOR_STARTUP_OFFSET_MILLIS 1000 "/>
+			<jvmarg line="-Xms300m -Xmx300m -XX:+PrintGC -XX:+RTGCPrintStatistics -Xloggc:rtsgc.out -XX:RTGCCriticalReservedBytes=50m -XX:RTGCCriticalPriority=15"/>
+			<classpath>
+				<pathelement path="${jars}/common_realtime.jar"/>
+				<pathelement path="${jars}/utils.jar"/>
+			    <pathelement path="${jars}/rtsj_memory.jar"/>
+				<pathelement path="${jars}/rtsj_threads.jar"/>
+				<pathelement path="${jars}/detector.jar"/>
+				<pathelement path="${jars}/binary_dump_reader.jar"/>
+				<pathelement path="${jars}/main.jar"/>
+			</classpath>
+		</java>
+	</target>
+	
+	
+	
+  <target name="clean"
+        description="clean up" >
+    <!-- Delete the ${build} and ${dist} directory trees -->
+    <delete dir="${build}"/>
+    <delete dir="${dist}"/>
+  </target>
+</project>

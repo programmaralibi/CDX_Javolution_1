@@ -1,0 +1,12 @@
+
+Real-time Collision Detector Benchmark
+--------------------------------------
+
+Quick start: "ant"
+
+The results presented in the paper submitted to JTRES were measured using
+"hard" (COL in the paper) and "easy" (NOI in the paper) workload. The
+configuration used can be found in scripts run_hard.sh and run_easy.sh.
+In particular, the binary dump of the air traffic used is in input/easy.bin
+and input/hard.bin.
+

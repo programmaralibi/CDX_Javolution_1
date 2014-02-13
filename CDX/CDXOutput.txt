@@ -1,0 +1,916 @@
+Buildfile: /home/amber/Downloads/scd/build.xml
+
+init:
+     [echo] 
+     [echo] Building for Default non-RTSJ Java compiler:
+     [echo]     
+     [echo] rt=default
+     [echo] name=Default non-RTSJ Java compiler
+     [echo] fork=false
+     [echo] java_home=${rcd.java_home}
+     [echo] rtsj=${rcd.rtsj}
+     [echo] java=${rcd.java_home}/bin/java
+     [echo] javac=${rcd.java_home}/bin/javac
+     [echo]     
+    [mkdir] Created dir: /home/amber/Downloads/scd/build
+    [mkdir] Created dir: /home/amber/Downloads/scd/build/utils
+    [mkdir] Created dir: /home/amber/Downloads/scd/build/common_realtime
+
+compile_nrt:
+    [mkdir] Created dir: /home/amber/Downloads/scd/build/java_memory
+    [mkdir] Created dir: /home/amber/Downloads/scd/build/java_threads
+    [mkdir] Created dir: /home/amber/Downloads/scd/build/detector
+    [mkdir] Created dir: /home/amber/Downloads/scd/build/simulator
+    [mkdir] Created dir: /home/amber/Downloads/scd/build/binary_dump_reader
+    [mkdir] Created dir: /home/amber/Downloads/scd/build/main
+    [mkdir] Created dir: /home/amber/Downloads/scd/build/precompiled_simulator
+    [mkdir] Created dir: /home/amber/Downloads/scd/build/tools
+    [javac] /home/amber/Downloads/scd/build.xml:138: warning: 'includeantruntime' was not set, defaulting to build.sysclasspath=last; set to false for repeatable builds
+    [javac] Compiling 32 source files to /home/amber/Downloads/scd/build/utils
+    [javac] warning: [options] bootstrap class path not set in conjunction with -source 1.4
+    [javac] 1 warning
+    [javac] /home/amber/Downloads/scd/build.xml:145: warning: 'includeantruntime' was not set, defaulting to build.sysclasspath=last; set to false for repeatable builds
+    [javac] Compiling 2 source files to /home/amber/Downloads/scd/build/tools
+    [javac] warning: [options] bootstrap class path not set in conjunction with -source 1.4
+    [javac] 1 warning
+    [javac] /home/amber/Downloads/scd/build.xml:152: warning: 'includeantruntime' was not set, defaulting to build.sysclasspath=last; set to false for repeatable builds
+    [javac] Compiling 1 source file to /home/amber/Downloads/scd/build/common_realtime
+    [javac] warning: [options] bootstrap class path not set in conjunction with -source 1.4
+    [javac] 1 warning
+    [javac] /home/amber/Downloads/scd/build.xml:159: warning: 'includeantruntime' was not set, defaulting to build.sysclasspath=last; set to false for repeatable builds
+    [javac] Compiling 4 source files to /home/amber/Downloads/scd/build/java_memory
+    [javac] warning: [options] bootstrap class path not set in conjunction with -source 1.4
+    [javac] 1 warning
+    [javac] /home/amber/Downloads/scd/build.xml:170: warning: 'includeantruntime' was not set, defaulting to build.sysclasspath=last; set to false for repeatable builds
+    [javac] Compiling 13 source files to /home/amber/Downloads/scd/build/java_threads
+    [javac] warning: [options] bootstrap class path not set in conjunction with -source 1.4
+    [javac] 1 warning
+    [javac] /home/amber/Downloads/scd/build.xml:182: warning: 'includeantruntime' was not set, defaulting to build.sysclasspath=last; set to false for repeatable builds
+    [javac] Compiling 23 source files to /home/amber/Downloads/scd/build/detector
+    [javac] warning: [options] bootstrap class path not set in conjunction with -source 1.4
+    [javac] 1 warning
+    [javac] /home/amber/Downloads/scd/build.xml:197: warning: 'includeantruntime' was not set, defaulting to build.sysclasspath=last; set to false for repeatable builds
+    [javac] Compiling 101 source files to /home/amber/Downloads/scd/build/simulator
+    [javac] warning: [options] bootstrap class path not set in conjunction with -source 1.4
+    [javac] Note: /home/amber/Downloads/scd/src/simulator/heap/SimMediator.java uses or overrides a deprecated API.
+    [javac] Note: Recompile with -Xlint:deprecation for details.
+    [javac] 1 warning
+    [javac] /home/amber/Downloads/scd/build.xml:213: warning: 'includeantruntime' was not set, defaulting to build.sysclasspath=last; set to false for repeatable builds
+    [javac] Compiling 2 source files to /home/amber/Downloads/scd/build/main
+    [javac] warning: [options] bootstrap class path not set in conjunction with -source 1.4
+    [javac] 1 warning
+    [javac] /home/amber/Downloads/scd/build.xml:228: warning: 'includeantruntime' was not set, defaulting to build.sysclasspath=last; set to false for repeatable builds
+    [javac] Compiling 1 source file to /home/amber/Downloads/scd/build/binary_dump_reader
+    [javac] warning: [options] bootstrap class path not set in conjunction with -source 1.4
+    [javac] 1 warning
+    [javac] /home/amber/Downloads/scd/build.xml:238: warning: 'includeantruntime' was not set, defaulting to build.sysclasspath=last; set to false for repeatable builds
+    [javac] Compiling 2 source files to /home/amber/Downloads/scd/build/precompiled_simulator
+    [javac] warning: [options] bootstrap class path not set in conjunction with -source 1.4
+    [javac] 1 warning
+
+dist_nrt:
+    [mkdir] Created dir: /home/amber/Downloads/scd/dist/lib
+      [jar] Building jar: /home/amber/Downloads/scd/dist/lib/utils.jar
+      [jar] Building jar: /home/amber/Downloads/scd/dist/lib/common_realtime.jar
+      [jar] Building jar: /home/amber/Downloads/scd/dist/lib/java_memory.jar
+      [jar] Building jar: /home/amber/Downloads/scd/dist/lib/java_threads.jar
+      [jar] Building jar: /home/amber/Downloads/scd/dist/lib/detector.jar
+      [jar] Building jar: /home/amber/Downloads/scd/dist/lib/simulator.jar
+      [jar] Building jar: /home/amber/Downloads/scd/dist/lib/binary_dump_reader.jar
+      [jar] Building jar: /home/amber/Downloads/scd/dist/lib/main.jar
+      [jar] Building jar: /home/amber/Downloads/scd/dist/lib/precompiled_simulator.jar
+      [jar] Building jar: /home/amber/Downloads/scd/dist/lib/tools.jar
+
+compile_rt:
+
+dist_rt:
+
+dist:
+
+run_default:
+     [echo] 
+     [echo] 			Running with jvm=${rcd.java_home}/bin/java, java threads and java memory. As the input we take "input/test" file. 
+     [echo] 	    
+     [java] Detector: detector priority is 9
+     [java] Detector: detector period is 50
+     [java] Simulator will generate 400 frames with simulated time interval 20.0ms and real time pause between frames at least 20.0ms, running from time 0 to time 8.0s, using priority 5 (NORM_PRIORITY is 5, MIN_PRIORITY is 1, MAX_PRIORITY is 10)
+     [java] Simulator runs at priority 5
+     [java] Simulator: timescale = 1.0
+     [java] Simulator: fps = 50
+     [java] Simulator: virtual_delta = 0.02 s
+     [java] Simulator: real_delta = 0.02 s
+     [java] Simulator: number of frames (MAX_FRAMES) = 400
+     [java] Simulator: debug mode (SYNCHRONOUS_DETECTOR) = false
+     [java] Simulator: pre-simulation (PRESIMULATE) = false
+     [java] .S-FRAME 0 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 0 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 1 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 1 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 2 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 2 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 3 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 3 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 4 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 4 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 5 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 5 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 6 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 6 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 7 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 7 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 8 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 8 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 9 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 9 linear01 2.0 2.0 5.0 
+     [java] .S-FRAME 10 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 10 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 11 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 11 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 12 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 12 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 13 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 13 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 14 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 14 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 15 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 15 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 16 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 16 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 17 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 17 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 18 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 18 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 19 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 19 linear01 2.0 2.0 5.0 
+     [java] .S-FRAME 20 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 20 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 21 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 21 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 22 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 22 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 23 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 23 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 24 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 24 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 25 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 25 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 26 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 26 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 27 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 27 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 28 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 28 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 29 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 29 linear01 2.0 2.0 5.0 
+     [java] .S-FRAME 30 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 30 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 31 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 31 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 32 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 32 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 33 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 33 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 34 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 34 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 35 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 35 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 36 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 36 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 37 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 37 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 38 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 38 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 39 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 39 linear01 2.0 2.0 5.0 
+     [java] .S-FRAME 40 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 40 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 41 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 41 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 42 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 42 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 43 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 43 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 44 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 44 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 45 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 45 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 46 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 46 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 47 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 47 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 48 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 48 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 49 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 49 linear01 2.0 2.0 5.0 
+     [java] .S-FRAME 50 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 50 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 51 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 51 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 52 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 52 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 53 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 53 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 54 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 54 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 55 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 55 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 56 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 56 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 57 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 57 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 58 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 58 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 59 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 59 linear01 2.0 2.0 5.0 
+     [java] .S-FRAME 60 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 60 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 61 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 61 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 62 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 62 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 63 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 63 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 64 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 64 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 65 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 65 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 66 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 66 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 67 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 67 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 68 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 68 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 69 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 69 linear01 2.0 2.0 5.0 
+     [java] .S-FRAME 70 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 70 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 71 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 71 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 72 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 72 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 73 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 73 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 74 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 74 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 75 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 75 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 76 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 76 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 77 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 77 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 78 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 78 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 79 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 79 linear01 2.0 2.0 5.0 
+     [java] .S-FRAME 80 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 80 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 81 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 81 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 82 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 82 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 83 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 83 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 84 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 84 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 85 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 85 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 86 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 86 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 87 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 87 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 88 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 88 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 89 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 89 linear01 2.0 2.0 5.0 
+     [java] .S-FRAME 90 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 90 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 91 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 91 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 92 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 92 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 93 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 93 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 94 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 94 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 95 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 95 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 96 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 96 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 97 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 97 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 98 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 98 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 99 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 99 linear01 2.0 2.0 5.0 
+     [java] .S-FRAME 100 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 100 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 101 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 101 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 102 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 102 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 103 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 103 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 104 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 104 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 105 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 105 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 106 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 106 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 107 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 107 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 108 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 108 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 109 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 109 linear01 2.0 2.0 5.0 
+     [java] .S-FRAME 110 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 110 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 111 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 111 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 112 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 112 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 113 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 113 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 114 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 114 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 115 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 115 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 116 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 116 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 117 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 117 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 118 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 118 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 119 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 119 linear01 2.0 2.0 5.0 
+     [java] .S-FRAME 120 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 120 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 121 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 121 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 122 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 122 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 123 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 123 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 124 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 124 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 125 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 125 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 126 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 126 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 127 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 127 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 128 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 128 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 129 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 129 linear01 2.0 2.0 5.0 
+     [java] .S-FRAME 130 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 130 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 131 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 131 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 132 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 132 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 133 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 133 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 134 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 134 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 135 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 135 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 136 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 136 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 137 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 137 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 138 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 138 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 139 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 139 linear01 2.0 2.0 5.0 
+     [java] .S-FRAME 140 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 140 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 141 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 141 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 142 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 142 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 143 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 143 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 144 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 144 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 145 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 145 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 146 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 146 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 147 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 147 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 148 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 148 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 149 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 149 linear01 2.0 2.0 5.0 
+     [java] .S-FRAME 150 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 150 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 151 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 151 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 152 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 152 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 153 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 153 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 154 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 154 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 155 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 155 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 156 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 156 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 157 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 157 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 158 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 158 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 159 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 159 linear01 2.0 2.0 5.0 
+     [java] .S-FRAME 160 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 160 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 161 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 161 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 162 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 162 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 163 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 163 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 164 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 164 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 165 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 165 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 166 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 166 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 167 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 167 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 168 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 168 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 169 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 169 linear01 2.0 2.0 5.0 
+     [java] .S-FRAME 170 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 170 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 171 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 171 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 172 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 172 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 173 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 173 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 174 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 174 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 175 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 175 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 176 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 176 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 177 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 177 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 178 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 178 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 179 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 179 linear01 2.0 2.0 5.0 
+     [java] .S-FRAME 180 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 180 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 181 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 181 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 182 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 182 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 183 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 183 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 184 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 184 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 185 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 185 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 186 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 186 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 187 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 187 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 188 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 188 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 189 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 189 linear01 2.0 2.0 5.0 
+     [java] .S-FRAME 190 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 190 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 191 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 191 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 192 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 192 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 193 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 193 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 194 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 194 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 195 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 195 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 196 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 196 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 197 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 197 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 198 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 198 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 199 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 199 linear01 2.0 2.0 5.0 
+     [java] .S-FRAME 200 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 200 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 201 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 201 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 202 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 202 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 203 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 203 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 204 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 204 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 205 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 205 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 206 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 206 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 207 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 207 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 208 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 208 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 209 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 209 linear01 2.0 2.0 5.0 
+     [java] .S-FRAME 210 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 210 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 211 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 211 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 212 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 212 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 213 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 213 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 214 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 214 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 215 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 215 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 216 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 216 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 217 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 217 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 218 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 218 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 219 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 219 linear01 2.0 2.0 5.0 
+     [java] .S-FRAME 220 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 220 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 221 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 221 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 222 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 222 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 223 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 223 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 224 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 224 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 225 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 225 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 226 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 226 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 227 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 227 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 228 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 228 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 229 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 229 linear01 2.0 2.0 5.0 
+     [java] .S-FRAME 230 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 230 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 231 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 231 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 232 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 232 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 233 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 233 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 234 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 234 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 235 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 235 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 236 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 236 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 237 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 237 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 238 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 238 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 239 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 239 linear01 2.0 2.0 5.0 
+     [java] .S-FRAME 240 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 240 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 241 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 241 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 242 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 242 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 243 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 243 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 244 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 244 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 245 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 245 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 246 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 246 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 247 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 247 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 248 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 248 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 249 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 249 linear01 2.0 2.0 5.0 
+     [java] .S-FRAME 250 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 250 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 251 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 251 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 252 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 252 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 253 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 253 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 254 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 254 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 255 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 255 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 256 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 256 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 257 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 257 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 258 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 258 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 259 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 259 linear01 2.0 2.0 5.0 
+     [java] .S-FRAME 260 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 260 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 261 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 261 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 262 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 262 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 263 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 263 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 264 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 264 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 265 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 265 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 266 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 266 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 267 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 267 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 268 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 268 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 269 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 269 linear01 2.0 2.0 5.0 
+     [java] .S-FRAME 270 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 270 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 271 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 271 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 272 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 272 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 273 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 273 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 274 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 274 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 275 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 275 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 276 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 276 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 277 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 277 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 278 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 278 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 279 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 279 linear01 2.0 2.0 5.0 
+     [java] .S-FRAME 280 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 280 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 281 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 281 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 282 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 282 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 283 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 283 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 284 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 284 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 285 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 285 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 286 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 286 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 287 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 287 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 288 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 288 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 289 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 289 linear01 2.0 2.0 5.0 
+     [java] .S-FRAME 290 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 290 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 291 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 291 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 292 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 292 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 293 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 293 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 294 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 294 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 295 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 295 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 296 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 296 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 297 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 297 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 298 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 298 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 299 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 299 linear01 2.0 2.0 5.0 
+     [java] .S-FRAME 300 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 300 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 301 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 301 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 302 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 302 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 303 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 303 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 304 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 304 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 305 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 305 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 306 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 306 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 307 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 307 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 308 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 308 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 309 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 309 linear01 2.0 2.0 5.0 
+     [java] .S-FRAME 310 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 310 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 311 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 311 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 312 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 312 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 313 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 313 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 314 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 314 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 315 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 315 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 316 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 316 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 317 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 317 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 318 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 318 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 319 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 319 linear01 2.0 2.0 5.0 
+     [java] .S-FRAME 320 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 320 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 321 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 321 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 322 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 322 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 323 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 323 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 324 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 324 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 325 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 325 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 326 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 326 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 327 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 327 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 328 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 328 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 329 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 329 linear01 2.0 2.0 5.0 
+     [java] .S-FRAME 330 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 330 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 331 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 331 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 332 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 332 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 333 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 333 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 334 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 334 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 335 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 335 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 336 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 336 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 337 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 337 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 338 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 338 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 339 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 339 linear01 2.0 2.0 5.0 
+     [java] .S-FRAME 340 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 340 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 341 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 341 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 342 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 342 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 343 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 343 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 344 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 344 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 345 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 345 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 346 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 346 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 347 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 347 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 348 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 348 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 349 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 349 linear01 2.0 2.0 5.0 
+     [java] .S-FRAME 350 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 350 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 351 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 351 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 352 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 352 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 353 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 353 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 354 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 354 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 355 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 355 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 356 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 356 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 357 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 357 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 358 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 358 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 359 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 359 linear01 2.0 2.0 5.0 
+     [java] .S-FRAME 360 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 360 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 361 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 361 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 362 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 362 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 363 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 363 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 364 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 364 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 365 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 365 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 366 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 366 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 367 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 367 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 368 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 368 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 369 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 369 linear01 2.0 2.0 5.0 
+     [java] .S-FRAME 370 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 370 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 371 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 371 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 372 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 372 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 373 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 373 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 374 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 374 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 375 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 375 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 376 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 376 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 377 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 377 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 378 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 378 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 379 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 379 linear01 2.0 2.0 5.0 
+     [java] .S-FRAME 380 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 380 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 381 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 381 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 382 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 382 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 383 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 383 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 384 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 384 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 385 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 385 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 386 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 386 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 387 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 387 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 388 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 388 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 389 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 389 linear01 2.0 2.0 5.0 
+     [java] .S-FRAME 390 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 390 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 391 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 391 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 392 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 392 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 393 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 393 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 394 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 394 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 395 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 395 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 396 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 396 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 397 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 397 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 398 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 398 linear01 2.0 2.0 5.0 
+     [java] S-FRAME 399 linear00 1.0 1.0 5.0 
+     [java] S-FRAME 399 linear01 2.0 2.0 5.0 
+     [java] Detector is finished, processed all frames.
+     [java] Generated frames: 400
+     [java] Received (and measured) frames: 400
+     [java] Frame not ready event count (in detector): 0
+     [java] Frames dropped due to full buffer in detector: 0
+     [java] Frames processed by detector: 400
+     [java] Detector stop indicator set: true
+     [java] Reported missed detector periods (reported by waitForNextPeriod): 0
+     [java] Detector first release was scheduled for: 258532950000000
+
+BUILD SUCCESSFUL
+Total time: 27 seconds
