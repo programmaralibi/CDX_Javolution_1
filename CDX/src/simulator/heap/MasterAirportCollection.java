@@ -3,9 +3,10 @@ package heap;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import javacp.util.Hashtable;
 import java.util.Properties;
-import javacp.util.StringTokenizer;
+import java.util.StringTokenizer;
+
+import javolution.util.FastMap;
 
 /**
  * This here class is meant as a global (inter-VM) method for configuring
@@ -52,8 +53,8 @@ class MasterAirportCollection {
 		}
 	}
 
-	static Hashtable airports = new Hashtable();
-	static Hashtable nofly = new Hashtable();
+	static FastMap airports = new FastMap();
+	static FastMap nofly = new FastMap();
 
 	public static void submitAirport(final SimAirport port) {
 		airports.put(port.getAirportCode(), port);

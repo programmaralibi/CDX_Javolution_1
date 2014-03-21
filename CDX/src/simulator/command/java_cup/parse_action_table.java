@@ -1,7 +1,7 @@
 
 package command.java_cup;
 
-import javacp.util.Enumeration;
+import java.util.Iterator;
 
 /** This class represents the complete "action" table of the parser. 
  *  It has one row for each state in the parse machine, and a column for
@@ -79,9 +79,9 @@ public class parse_action_table {
 	}
 
       /* now go across every production and make sure we hit it */
-      for (Enumeration p = production.all(); p.hasMoreElements(); )
+      for (Iterator p = production.all(); p.hasNext(); )
 	{
-	  prod = (production)p.nextElement();
+	  prod = (production)p.next();
 
 	  /* if we didn't hit it give a warning */
 	  if (prod.num_reductions() == 0)

@@ -6,6 +6,8 @@
 
 package command.java_cup.simple_calc;
 
+import java.util.Stack;
+
 
 /** CUP v0.10k generated parser.
   * @version Sun Jul 25 13:36:02 EDT 1999
@@ -97,7 +99,7 @@ protected void init_actions()
 public command.java_cup.runtime.Symbol do_action(
     int                        act_num,
     command.java_cup.runtime.lr_parser parser,
-    javacp.util.Stack            stack,
+    Stack            stack,
     int                        top)
     throws java.lang.Exception
   {
@@ -135,7 +137,7 @@ class CUP$parser$actions {
   public final command.java_cup.runtime.Symbol CUP$parser$do_action(
     int                        CUP$parser$act_num,
     command.java_cup.runtime.lr_parser CUP$parser$parser,
-    javacp.util.Stack            CUP$parser$stack,
+    Stack            CUP$parser$stack,
     int                        CUP$parser$top)
     throws java.lang.Exception
     {

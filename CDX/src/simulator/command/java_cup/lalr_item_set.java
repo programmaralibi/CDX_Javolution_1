@@ -1,8 +1,10 @@
 
 package command.java_cup;
 
-import javacp.util.Hashtable;
-import javacp.util.Enumeration;
+import java.util.Iterator;
+
+import javolution.util.FastMap;
+import javolution.util.FastTable;
 
 /** This class represents a set of LALR items.  For purposes of building
  *  these sets, items are considered unique only if they have unique cores
@@ -36,7 +38,7 @@ public class lalr_item_set {
     throws internal_error
     {
       not_null(other);
-      _all = (Hashtable)other._all.clone();
+      _all.putAll(other._all);
     }
 
   /*-----------------------------------------------------------*/
@@ -46,10 +48,10 @@ public class lalr_item_set {
   /** A hash table to implement the set.  We store the items using themselves
    *  as keys. 
    */
-  protected Hashtable _all = new Hashtable(11);
+  protected FastMap _all = new FastMap();
 
   /** Access to all elements of the set. */
-  public Enumeration all() {return _all.elements();}
+  public Iterator all() {return _all.keySet().iterator();}
 
   /*. . . . . . . . . . . . . . . . . . . . . . . . . . . . . .*/
 
@@ -88,8 +90,8 @@ public class lalr_item_set {
       not_null(other);
 
       /* walk down our set and make sure every element is in the other */
-      for (Enumeration e = all(); e.hasMoreElements(); )
-	if (!other.contains((lalr_item)e.nextElement()))
+      for (Iterator e = all(); e.hasNext(); )
+	if (!other.contains((lalr_item)e.next()))
 	  return false;
 
       /* they were all there */
@@ -167,8 +169,8 @@ public class lalr_item_set {
       not_null(other);
 
       /* walk down the other set and do the adds individually */
-      for (Enumeration e = other.all(); e.hasMoreElements(); )
-	add((lalr_item)e.nextElement());
+      for (Iterator e = other.all(); e.hasNext(); )
+	add((lalr_item)e.next());
     }
 
   /*. . . . . . . . . . . . . . . . . . . . . . . . . . . . . .*/
@@ -181,8 +183,8 @@ public class lalr_item_set {
       not_null(other);
 
       /* walk down the other set and do the removes individually */
-      for (Enumeration e = other.all(); e.hasMoreElements(); )
-	remove((lalr_item)e.nextElement());
+      for (Iterator e = other.all(); e.hasNext(); )
+	remove((lalr_item)e.next());
     }
 
   /*. . . . . . . . . . . . . . . . . . . . . . . . . . . . . .*/
@@ -190,13 +192,13 @@ public class lalr_item_set {
   /** Remove and return one item from the set (done in hash order). */
   public lalr_item get_one() throws internal_error
     {
-      Enumeration the_set;
+      Iterator the_set;
       lalr_item result;
 
       the_set = all();
-      if (the_set.hasMoreElements())
+      if (the_set.hasNext())
 	{
-          result = (lalr_item)the_set.nextElement();
+          result = (lalr_item)the_set.next();
           remove(result);
 	  return result;
 	}
@@ -242,7 +244,7 @@ public class lalr_item_set {
       lalr_item     itm, new_itm, add_itm;
       non_terminal  nt;
       terminal_set  new_lookaheads;
-      Enumeration   p;
+      Iterator  p;
       production    prod;
       boolean       need_prop;
 
@@ -271,9 +273,9 @@ public class lalr_item_set {
 	      need_prop = itm.lookahead_visible();
 
 	      /* create items for each production of that non term */
-	      for (p = nt.productions(); p.hasMoreElements(); )
+	      for (p = nt.productions(); p.hasNext(); )
 		{
-		  prod = (production)p.nextElement();
+		  prod = (production)p.next();
 
 		  /* create new item with dot at start and that lookahead */
 		  new_itm = new lalr_item(prod, 
@@ -333,7 +335,7 @@ public boolean equals(Object other)
 public int hashCode()
     {
       int result = 0;
-      Enumeration e;
+      Iterator e;
       int cnt;
 
       /* only compute a new one if we don't have it cached */
@@ -343,8 +345,8 @@ public int hashCode()
 	  //   CSA fix! we'd *like* to hash just a few elements, but
 	  //   that means equal sets will have inequal hashcodes, which
 	  //   we're not allowed (by contract) to do.  So hash them all.
-          for (e = all(), cnt=0 ; e.hasMoreElements() /*&& cnt<5*/; cnt++)
-	    result ^= ((lalr_item)e.nextElement()).hashCode();
+          for (e = all(), cnt=0 ; e.hasNext() /*&& cnt<5*/; cnt++)
+	    result ^= ((lalr_item)e.next()).hashCode();
 
 	  hashcode_cache = new Integer(result);
 	}
@@ -361,9 +363,9 @@ public String toString()
       StringBuffer result = new StringBuffer();
 
       result.append("{\n");
-      for (Enumeration e=all(); e.hasMoreElements(); ) 
+      for (Iterator e=all(); e.hasNext(); ) 
  	{
- 	  result.append("  " + e.nextElement() + "\n");
+ 	  result.append("  " + e.next() + "\n");
  	}
        result.append("}");
 

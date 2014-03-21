@@ -2,10 +2,10 @@ package immortal.persistentScope.transientScope;
 
 import immortal.Constants;
 
-import javacp.util.ArrayList;
-import javacp.util.HashMap;
-import javacp.util.Iterator;
-import javacp.util.LinkedList;
+import java.util.Iterator;
+
+import javolution.util.FastMap;
+import javolution.util.FastTable;
 
 /**
  * Reduces the set of  possible collisions by using a voxel drawing algorithm.
@@ -26,11 +26,11 @@ class Reducer {
 	}
 
 	/** * Puts a Motion object into the voxel map at a voxel. */
-	protected void putIntoMap(HashMap voxel_map, Vector2d voxel, Motion motion) {
+	protected void putIntoMap(FastMap voxel_map, Vector2d voxel, Motion motion) {
 		if (!voxel_map.containsKey(voxel)) {
-			voxel_map.put(new Vector2d(voxel), new ArrayList());
+			voxel_map.put(new Vector2d(voxel), new FastTable());
 		}
-		((ArrayList) voxel_map.get(voxel)).add(motion);
+		((FastTable) voxel_map.get(voxel)).add(motion);
 	}
 
 	/**
@@ -103,7 +103,7 @@ class Reducer {
 		return result;
 	}
 
-	protected void dfsVoxelHashRecurse(Motion motion, Vector2d next_voxel, HashMap voxel_map, HashMap graph_colors) {
+	protected void dfsVoxelHashRecurse(Motion motion, Vector2d next_voxel, FastMap voxel_map, FastMap graph_colors) {
 		Vector2d tmp = new Vector2d();
 
 		if (isInVoxel(next_voxel, motion) && !graph_colors.containsKey(next_voxel)) {
@@ -151,7 +151,7 @@ class Reducer {
 	/**
 	 * Colors all of the voxels that overla the Motion.
 	 */
-	protected void performVoxelHashing(Motion motion, HashMap voxel_map, HashMap graph_colors) {
+	protected void performVoxelHashing(Motion motion, FastMap voxel_map, FastMap graph_colors) {
 		graph_colors.clear();
 		Vector2d voxel = new Vector2d();
 		voxelHash(motion.getFirstPosition(), voxel);
@@ -163,17 +163,17 @@ class Reducer {
 	 * implement RandomAccess. Each Vector of Motions that is returned represents a set of Motions
 	 * that might have collisions.
 	 */
-	public LinkedList reduceCollisionSet(LinkedList motions) {
+	public FastTable reduceCollisionSet(FastTable motions) {
 
-		HashMap voxel_map = new HashMap();
-		HashMap graph_colors = new HashMap();
+		FastMap voxel_map = new FastMap();
+		FastMap graph_colors = new FastMap();
 
 		for (Iterator iter = motions.iterator(); iter.hasNext();)
 			performVoxelHashing((Motion) iter.next(), voxel_map, graph_colors);
 
-		LinkedList ret = new LinkedList();
+		FastTable ret = new FastTable();
 		for (Iterator iter = voxel_map.values().iterator(); iter.hasNext();) {
-			LinkedList cur_set = (LinkedList) iter.next();
+			FastTable cur_set = (FastTable) iter.next();
 			if (cur_set.size() > 1) ret.add(cur_set);
 		}
 		return ret;

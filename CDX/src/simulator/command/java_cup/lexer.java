@@ -1,6 +1,6 @@
 package command.java_cup;
 
-import javacp.util.Hashtable;
+import javolution.util.FastMap;
 
 import command.java_cup.runtime.Symbol;
 
@@ -78,7 +78,7 @@ public class lexer {
    *  they match one of the keywords.  The string of the name is the key here,
    *  which indexes Integer objects holding the symbol number. 
    */
-  protected static Hashtable keywords = new Hashtable(23);
+  protected static FastMap keywords = new FastMap();
 
   /*. . . . . . . . . . . . . . . . . . . . . . . . . . . . . .*/
 
@@ -88,7 +88,7 @@ public class lexer {
    *  appropriate char (currently Character objects have a bug which precludes
    *  their use in tables).
    */
-  protected static Hashtable char_symbols = new Hashtable(11);
+  protected static FastMap char_symbols = new FastMap();
 
   /*. . . . . . . . . . . . . . . . . . . . . . . . . . . . . .*/
 

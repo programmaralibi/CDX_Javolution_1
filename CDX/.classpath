@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
+	<classpathentry kind="src" path="src/tools"/>
+	<classpathentry kind="src" path="src/common_realtime"/>
+	<classpathentry kind="src" path="src/java_memory"/>
+	<classpathentry kind="src" path="src/java_threads"/>
+	<classpathentry kind="src" path="src/detector"/>
+	<classpathentry kind="src" path="src/main"/>
+	<classpathentry kind="src" path="src/simulator"/>
+	<classpathentry kind="lib" path="libJavolution/javolution-core-java-6.1.0-SNAPSHOT.jar" sourcepath="libJavolution/javolution-core-java-6.1.0-SNAPSHOT-sources.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

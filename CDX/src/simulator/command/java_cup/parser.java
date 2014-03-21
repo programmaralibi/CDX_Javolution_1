@@ -6,7 +6,9 @@
 
 package command.java_cup;
 
-import javacp.util.Hashtable;
+import java.util.Stack;
+
+import javolution.util.FastMap;
 
 /** CUP v0.10k generated parser.
   * @version Sun Jul 25 13:35:26 EDT 1999
@@ -337,7 +339,7 @@ public class parser extends command.java_cup.runtime.lr_parser {
   public command.java_cup.runtime.Symbol do_action(
     int                        act_num,
     command.java_cup.runtime.lr_parser parser,
-    javacp.util.Stack            stack,
+    Stack            stack,
     int                        top)
     throws java.lang.Exception
   {
@@ -444,10 +446,10 @@ class CUP$parser$actions {
     }
 
   /** table of declared symbols -- contains production parts indexed by name */
-  protected Hashtable symbols = new Hashtable();
+  protected FastMap symbols = new FastMap();
 
   /** table of just non terminals -- contains non_terminals indexed by name */
-  protected Hashtable non_terms = new Hashtable();
+  protected FastMap non_terms = new FastMap();
 
   /** declared start non_terminal */
   protected non_terminal start_nt = null;
@@ -494,7 +496,7 @@ class CUP$parser$actions {
   public final command.java_cup.runtime.Symbol CUP$parser$do_action(
     int                        CUP$parser$act_num,
     command.java_cup.runtime.lr_parser CUP$parser$parser,
-    javacp.util.Stack            CUP$parser$stack,
+    Stack            CUP$parser$stack,
     int                        CUP$parser$top)
     throws java.lang.Exception
     {

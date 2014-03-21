@@ -1,9 +1,8 @@
 package command.java_cup;
 
-import javacp.util.Hashtable;
-import javacp.util.Enumeration;
+import java.util.Iterator;
 
-import command.java_cup.assoc;
+import javolution.util.FastMap;
 
 /** This class represents a terminal symbol in the grammar.  Each terminal 
  *  has a textual name, an index, and a string which indicates the type of 
@@ -83,10 +82,10 @@ public class terminal extends symbol {
   /** Table of all terminals.  Elements are stored using name strings as 
    *  the key 
    */
-  protected static Hashtable _all = new Hashtable();
+  protected static FastMap _all = new FastMap();
 
   /** Access to all terminals. */
-  public static Enumeration all() {return _all.elements();}
+  public static Iterator all() {return _all.keySet().iterator(); }
 
   /** Lookup a terminal by name string. */ 
   public static terminal find(String with_name)
@@ -101,7 +100,7 @@ public class terminal extends symbol {
   /*. . . . . . . . . . . . . . . . . . . . . . . . . . . . . .*/
 
   /** Table of all terminals indexed by their index number. */
-  protected static Hashtable _all_by_index = new Hashtable();
+  protected static FastMap _all_by_index = new FastMap();
 
   /** Lookup a terminal by index. */
   public static terminal find(int indx)

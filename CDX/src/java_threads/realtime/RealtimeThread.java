@@ -1,6 +1,6 @@
 package realtime;
 
-import javacp.util.HashMap;
+import javolution.util.FastMap;
 
 public class RealtimeThread extends Thread implements Runnable {
 
@@ -8,7 +8,7 @@ public class RealtimeThread extends Thread implements Runnable {
 	protected Thread thread = null;
 	protected long startTime = 0;
 	protected long period = -1;
-	protected static HashMap wrappers = new HashMap();
+	protected static FastMap wrappers = new FastMap();
 
 	public RealtimeThread(SchedulingParameters scheduling) {
 		thread = new Thread(this);

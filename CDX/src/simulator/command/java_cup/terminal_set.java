@@ -1,9 +1,11 @@
 
 package command.java_cup;
 
-import javacp.util.BitSet;
+import javax.lang.model.element.Element;
 
-/** A set of terminals implemented as a bitset. 
+import javolution.util.FastBitSet;
+
+/** A set of terminals implemented as a FastBitSet. 
  * @version last updated: 11/25/95
  * @author  Scott Hudson
  */
@@ -16,8 +18,8 @@ public class terminal_set {
   /** Constructor for an empty set. */
   public terminal_set() 
     { 
-      /* allocate the bitset at what is probably the right size */
-      _elements = new BitSet(terminal.number());
+      /* allocate the FastBitSet at what is probably the right size */
+      _elements = new FastBitSet();
     }
 
   /*. . . . . . . . . . . . . . . . . . . . . . . . . . . . . .*/
@@ -29,7 +31,8 @@ public class terminal_set {
     throws internal_error
     {
       not_null(other);
-      _elements = (BitSet)other._elements.clone();
+      _elements = new FastBitSet();
+      _elements.addAll(other._elements);
     }
 
   /*-----------------------------------------------------------*/
@@ -43,8 +46,8 @@ public class terminal_set {
   /*--- (Access to) Instance Variables ------------------------*/
   /*-----------------------------------------------------------*/
 
-  /** Bitset to implement the actual set. */
-  protected BitSet _elements;
+  /** FastBitSet to implement the actual set. */
+  protected FastBitSet _elements;
 
   /*-----------------------------------------------------------*/
   /*--- General Methods ----------------------------------------*/
@@ -101,7 +104,8 @@ public class terminal_set {
       not_null(other);
 
       /* make a copy of the other set */
-      BitSet copy_other = (BitSet)other._elements.clone();
+      FastBitSet copy_other = new FastBitSet();
+      copy_other.addAll(other._elements);
 
       /* and or in */
       copy_other.or(_elements);
@@ -169,7 +173,8 @@ public class terminal_set {
       not_null(other);
 
       /* make a copy */
-      BitSet copy = (BitSet)_elements.clone();
+      FastBitSet copy = new FastBitSet();
+      copy.addAll(_elements);
 
       /* or in the other set */
       _elements.or(other._elements);
@@ -189,7 +194,8 @@ public class terminal_set {
        not_null(other);
 
        /* make a copy of the other set */
-       BitSet copy = (BitSet)other._elements.clone();
+       FastBitSet copy = new FastBitSet();
+       copy.addAll(other._elements);
 
        /* xor out our values */
        copy.xor(this._elements);

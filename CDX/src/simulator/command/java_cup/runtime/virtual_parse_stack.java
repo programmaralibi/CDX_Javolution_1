@@ -1,7 +1,7 @@
 
 package command.java_cup.runtime;
 
-import javacp.util.Stack;
+import java.util.Stack;
 
 /** This class implements a temporary or "virtual" parse stack that 
  *  replaces the top portion of the actual parse stack (the part that 

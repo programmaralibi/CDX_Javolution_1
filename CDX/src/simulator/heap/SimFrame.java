@@ -1,6 +1,6 @@
 package heap;
 
-import javacp.util.NoSuchElementException;
+import java.util.NoSuchElementException;
 
 /**
  * The <code>BaseFrame</code> class is the default implementation of the

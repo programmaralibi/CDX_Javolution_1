@@ -1,7 +1,8 @@
 package command.java_cup;
 
-import javacp.util.Hashtable;
-import javacp.util.Enumeration;
+import java.util.Iterator;
+
+import javolution.util.FastMap;
 
 /** This class represents a non-terminal symbol in the grammar.  Each
  *  non terminal has a textual name, an index, and a string which indicates
@@ -60,10 +61,10 @@ public class non_terminal extends symbol {
   /** Table of all non-terminals -- elements are stored using name strings 
    *  as the key 
    */
-  protected static Hashtable _all = new Hashtable();
+  protected static FastMap _all = new FastMap();
 
   /** Access to all non-terminals. */
-  public static Enumeration all() {return _all.elements();}
+  public static Iterator all() {return _all.keySet().iterator();}
 
   /** lookup a non terminal by name string */ 
   public static non_terminal find(String with_name)
@@ -77,7 +78,7 @@ public class non_terminal extends symbol {
   /*. . . . . . . . . . . . . . . . . . . . . . . . . . . . . .*/
 
   /** Table of all non terminals indexed by their index number. */
-  protected static Hashtable _all_by_index = new Hashtable();
+  protected static FastMap _all_by_index = new FastMap();
 
   /** Lookup a non terminal by index. */
   public static non_terminal find(int indx)
@@ -141,7 +142,7 @@ public class non_terminal extends symbol {
     {
       boolean      change = true;
       non_terminal nt;
-      Enumeration  e;
+      Iterator e;
       production   prod;
 
       /* repeat this process until there is no change */
@@ -151,9 +152,9 @@ public class non_terminal extends symbol {
 	  change = false;
 
 	  /* consider each non-terminal */
-	  for (e=all(); e.hasMoreElements(); )
+	  for (e=all(); e.hasNext();)
 	    {
-	      nt = (non_terminal)e.nextElement();
+	      nt = (non_terminal)e.next();
 
 	      /* only look at things that aren't already marked nullable */
 	      if (!nt.nullable())
@@ -168,9 +169,9 @@ public class non_terminal extends symbol {
 	}
       
       /* do one last pass over the productions to finalize all of them */
-      for (e=production.all(); e.hasMoreElements(); )
+      for (e=production.all(); e.hasNext(); )
 	{
-	  prod = (production)e.nextElement();
+	  prod = (production)e.next();
 	  prod.set_nullable(prod.check_nullable());
 	}
     }
@@ -183,8 +184,8 @@ public class non_terminal extends symbol {
   public static void compute_first_sets() throws internal_error
     {
       boolean      change = true;
-      Enumeration  n;
-      Enumeration  p;
+      Iterator n;
+      Iterator p;
       non_terminal nt;
       production   prod;
       terminal_set prod_first;
@@ -196,14 +197,14 @@ public class non_terminal extends symbol {
 	  change = false;
 
 	  /* consider each non-terminal */
-	  for (n = all(); n.hasMoreElements(); )
+	  for (n = all(); n.hasNext(); )
 	    {
-	      nt = (non_terminal)n.nextElement();
+	      nt = (non_terminal)n.next();
 
 	      /* consider every production of that non terminal */
-	      for (p = nt.productions(); p.hasMoreElements(); )
+	      for (p = nt.productions(); p.hasNext(); )
 		{
-		  prod = (production)p.nextElement();
+		  prod = (production)p.next();
 
 		  /* get the updated first of that production */
 		  prod_first = prod.check_first_set();
@@ -224,10 +225,10 @@ public class non_terminal extends symbol {
   /*-----------------------------------------------------------*/
 
   /** Table of all productions with this non terminal on the LHS. */
-  protected Hashtable _productions = new Hashtable(11);
+  protected FastMap _productions = new FastMap();
 
   /** Access to productions with this non terminal on the LHS. */
-  public Enumeration productions() {return _productions.elements();}
+  public Iterator productions() {return _productions.keySet().iterator();}
 
   /*. . . . . . . . . . . . . . . . . . . . . . . . . . . . . .*/
 
@@ -281,9 +282,9 @@ public boolean is_non_term()
   protected boolean looks_nullable() throws internal_error
     {
       /* look and see if any of the productions now look nullable */
-      for (Enumeration e = productions(); e.hasMoreElements(); )
+      for (Iterator e = productions(); e.hasNext(); )
 	/* if the production can go to empty, we are nullable */
-	if (((production)e.nextElement()).check_nullable())
+	if (((production)e.next()).check_nullable())
 	  return true;
 
       /* none of the productions can go to empty, so we are not nullable */

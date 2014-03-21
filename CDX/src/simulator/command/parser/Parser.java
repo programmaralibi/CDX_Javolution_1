@@ -6,6 +6,8 @@
 
 package command.parser;
 
+import java.util.Stack;
+
 import command.evaluator.AssignStmt;
 import command.evaluator.ConstChangeStmt;
 import command.evaluator.CreateListExpr;
@@ -1026,7 +1028,7 @@ public class Parser extends command.java_cup.runtime.lr_parser {
   public command.java_cup.runtime.Symbol do_action(
     int                        act_num,
     command.java_cup.runtime.lr_parser parser,
-    javacp.util.Stack            stack,
+    Stack            stack,
     int                        top)
     throws java.lang.Exception
   {
@@ -1084,7 +1086,7 @@ class CUP$Parser$actions {
   public final command.java_cup.runtime.Symbol CUP$Parser$do_action(
     int                        CUP$Parser$act_num,
     command.java_cup.runtime.lr_parser CUP$Parser$parser,
-    javacp.util.Stack            CUP$Parser$stack,
+    Stack            CUP$Parser$stack,
     int                        CUP$Parser$top)
     throws java.lang.Exception
     {

@@ -1,8 +1,9 @@
 
 package command.java_cup;
 
-import javacp.util.Hashtable;
-import javacp.util.Enumeration;
+import java.util.Iterator;
+
+import javolution.util.FastMap;
 
 /** This class represents a set of symbols and provides a series of 
  *  set operations to manipulate them.
@@ -26,7 +27,7 @@ public class symbol_set {
   public symbol_set(symbol_set other) throws internal_error
     {
       not_null(other);
-      _all = (Hashtable)other._all.clone();
+      _all.putAll(other._all); 
     }
 
   /*-----------------------------------------------------------*/
@@ -35,10 +36,10 @@ public class symbol_set {
 
   /** A hash table to hold the set. Symbols are keyed using their name string. 
    */
-  protected Hashtable _all = new Hashtable(11);
+  protected FastMap _all = new FastMap();
 
   /** Access to all elements of the set. */
-  public Enumeration all() {return _all.elements();}
+  public Iterator all() {return _all.keySet().iterator();}
 
   /** size of the set */
   public int size() {return _all.size();}
@@ -74,8 +75,8 @@ public class symbol_set {
       not_null(other);
 
       /* walk down our set and make sure every element is in the other */
-      for (Enumeration e = all(); e.hasMoreElements(); )
-	if (!other.contains((symbol)e.nextElement()))
+      for (Iterator e = all(); e.hasNext(); )
+	if (!other.contains((symbol)e.next()))
 	  return false;
 
       /* they were all there */
@@ -136,8 +137,8 @@ public class symbol_set {
       not_null(other);
 
       /* walk down the other set and do the adds individually */
-      for (Enumeration e = other.all(); e.hasMoreElements(); )
-	result = add((symbol)e.nextElement()) || result;
+      for (Iterator e = other.all(); e.hasNext(); )
+	result = add((symbol)e.next()) || result;
 
       return result;
     }
@@ -152,8 +153,8 @@ public class symbol_set {
       not_null(other);
 
       /* walk down the other set and do the removes individually */
-      for (Enumeration e = other.all(); e.hasMoreElements(); )
-	remove((symbol)e.nextElement());
+      for (Iterator e = other.all(); e.hasNext(); )
+	remove((symbol)e.next());
     }
 
   /*. . . . . . . . . . . . . . . . . . . . . . . . . . . . . .*/
@@ -193,11 +194,11 @@ public int hashCode()
     {
       int result = 0;
       int cnt;
-      Enumeration e;
+      Iterator e;
 
       /* hash together codes from at most first 5 elements */
-      for (e = all(), cnt=0 ; e.hasMoreElements() && cnt<5; cnt++)
-	result ^= ((symbol)e.nextElement()).hashCode();
+      for (e = all(), cnt=0 ; e.hasNext() && cnt<5; cnt++)
+	result ^= ((symbol)e.next()).hashCode();
 
       return result;
     }
@@ -213,14 +214,14 @@ public String toString()
 
       result = "{";
       comma_flag = false;
-      for (Enumeration e = all(); e.hasMoreElements(); )
+      for (Iterator e = all(); e.hasNext(); )
 	{
 	  if (comma_flag)
 	    result += ", ";
 	  else
 	    comma_flag = true;
 
-	  result += ((symbol)e.nextElement()).name();
+	  result += ((symbol)e.next()).name();
 	}
       result += "}";
 

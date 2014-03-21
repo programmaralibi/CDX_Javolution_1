@@ -1,17 +1,18 @@
 package immortal.persistentScope.transientScope;
 
-import realtime.MemoryArea;
 import immortal.Constants;
 import immortal.FrameSynchronizer;
 import immortal.RawFrame;
 import immortal.persistentScope.CallSign;
 import immortal.persistentScope.StateTable;
 
-import javacp.util.HashSet;
-import javacp.util.List;
-import javacp.util.Iterator;
-import javacp.util.LinkedList;
-import javacp.util.HashMap;
+import java.util.Iterator;
+import java.util.ListIterator;
+
+import javolution.util.FastMap;
+import javolution.util.FastSet;
+import javolution.util.FastTable;
+import realtime.MemoryArea;
 
 /**
  * The constructor runs and the instance lives in the persistent detector scope. The state table 
@@ -38,7 +39,7 @@ public class TransientDetectorScopeEntry implements Runnable {
 		}
 
 		final Reducer reducer = new Reducer(voxelSize);
-		final List collisions = lookForCollisions(reducer, createMotions());
+		final FastTable collisions = lookForCollisions(reducer, createMotions());
 
 		int numberOfCollisions = collisions.size();
 		if (immortal.ImmortalEntry.recordedRuns < immortal.ImmortalEntry.maxDetectorRuns) {
@@ -51,10 +52,10 @@ public class TransientDetectorScopeEntry implements Runnable {
 
 			for(final Iterator iter = collisions.iterator(); iter.hasNext();) {
 				Collision col = (Collision) iter.next();
-				List aircraft = col.getAircraftInvolved();
+				java.util.List aircraft = col.getAircraftInvolved();
 				System.out.println("CD collision "+colIndex+" occured at location "+col.getLocation() + " with "+aircraft.size()+" involved aircraft.");
 
-				for(final Iterator aiter = aircraft.iterator(); aiter.hasNext();) {
+				for(final ListIterator aiter = aircraft.listIterator(); aiter.hasNext();) {
 					Aircraft a = (Aircraft) aiter.next();
 
 					System.out.println("CD collision "+colIndex+" includes aircraft "+a);
@@ -70,8 +71,8 @@ public class TransientDetectorScopeEntry implements Runnable {
 		}
 	}
 
-	public List lookForCollisions(final Reducer reducer, final List motions) {
-		final List check = reduceCollisionSet(reducer, motions);
+	public FastTable lookForCollisions(final Reducer reducer, final FastTable motions) {
+		final FastTable check = reduceCollisionSet(reducer, motions);
 		final CollisionCollector c = new CollisionCollector();
 
 		int suspectedSize = check.size();
@@ -82,7 +83,7 @@ public class TransientDetectorScopeEntry implements Runnable {
 			System.out.println("CD found "+suspectedSize+" potential collisions");
 			int i=0;
 			for(final Iterator iter = check.iterator(); iter.hasNext();) {
-				final List col = (List)iter.next();
+				final FastTable col = (FastTable)iter.next();
 
 				for(final Iterator aiter = col.iterator(); aiter.hasNext();) {
 					final Motion m = (Motion)aiter.next();
@@ -93,8 +94,8 @@ public class TransientDetectorScopeEntry implements Runnable {
 			}
 		}
 
-		for (final Iterator iter = check.iterator(); iter.hasNext();)
-			c.addCollisions(determineCollisions((List) iter.next()));
+		for (final ListIterator iter = check.listIterator(); iter.hasNext();)
+			c.addCollisions(determineCollisions((FastTable) iter.next()));
 		return c.getCollisions();
 	}
 
@@ -102,24 +103,24 @@ public class TransientDetectorScopeEntry implements Runnable {
 	 * Takes a List of Motions and returns an List of Lists of Motions, where the inner lists implement RandomAccess.
 	 * Each Vector of Motions that is returned represents a set of Motions that might have collisions.
 	 */
-	public List reduceCollisionSet(final Reducer it, final List motions) {
+	public FastTable reduceCollisionSet(final Reducer it, final FastTable motions) {
 
-		final HashMap voxel_map = new HashMap();
-		final HashMap graph_colors = new HashMap();
+		final FastMap voxel_map = new FastMap();
+		final FastMap graph_colors = new FastMap();
 
 		for (final Iterator iter = motions.iterator(); iter.hasNext();)
 			it.performVoxelHashing((Motion) iter.next(), voxel_map, graph_colors);
 
-		final List ret = new LinkedList();
+		final FastTable ret = new FastTable();
 		for (final Iterator iter = voxel_map.values().iterator(); iter.hasNext();) {
-			final List cur_set = (List) iter.next();
+			final FastTable cur_set = (FastTable) iter.next();
 			if (cur_set.size() > 1) ret.add(cur_set);
 		}
 		return ret;
 	}
 
-	public List determineCollisions(final List motions) {
-		final List ret = new LinkedList();
+	public FastTable determineCollisions(final FastTable motions) {
+		final FastTable ret = new FastTable();
 		for (int i = 0; i < motions.size() - 1; i++) {
 			final Motion one = (Motion) motions.get(i);
 			for (int j = i + 1; j < motions.size(); j++) {
@@ -171,10 +172,10 @@ public class TransientDetectorScopeEntry implements Runnable {
 	 * 
 	 * @return
 	 */
-	public List createMotions() {
+	public FastTable createMotions() {
 
-		final List ret = new LinkedList();
-		final HashSet poked = new HashSet();
+		final FastTable ret = new FastTable();
+		final FastSet poked = new FastSet();
 
 		Aircraft craft;
 		Vector3d new_pos;

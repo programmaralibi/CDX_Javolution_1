@@ -1,9 +1,11 @@
 
 package command.java_cup;
 
-import javacp.util.Hashtable;
-import javacp.util.Enumeration;
-import javacp.util.Stack;
+import java.util.Iterator;
+import java.util.Stack;
+
+import javolution.util.FastMap;
+import javolution.util.FastTable;
 
 /** This class represents a state in the LALR viable prefix recognition machine.
  *  A state consists of an LALR item set and a set of transitions to other 
@@ -83,10 +85,10 @@ public class lalr_state {
   /*-----------------------------------------------------------*/
 
   /** Collection of all states. */
-  protected static Hashtable _all = new Hashtable();
+  protected static FastMap _all = new FastMap();
 
   /** Collection of all states. */
-  public static Enumeration all() {return _all.elements();}
+  public static Iterator all() {return _all.keySet().iterator();}
 
   /*. . . . . . . . . . . . . . . . . . . . . . . . . . . . . .*/
 
@@ -99,7 +101,7 @@ public class lalr_state {
    *  unclosed, set of items -- which uniquely define the state).  This table 
    *  stores state objects using (a copy of) their kernel item sets as keys. 
    */
-  protected static Hashtable _all_kernels = new Hashtable();
+  protected static FastMap _all_kernels = new FastMap();
 
   /*. . . . . . . . . . . . . . . . . . . . . . . . . . . . . .*/
 
@@ -170,9 +172,9 @@ public class lalr_state {
 
       System.out.println("lalr_state [" + st.index() + "] {");
       itms = st.items();
-      for (Enumeration e = itms.all(); e.hasMoreElements(); )
+      for (Iterator e = itms.all(); e.hasNext(); )
 	{
-	  itm = (lalr_item)e.nextElement();
+	  itm = (lalr_item)e.next();
 	  System.out.print("  [");
 	  System.out.print(itm.the_production().lhs().the_symbol().name());
 	  System.out.print(" ::= ");
@@ -203,10 +205,10 @@ public class lalr_state {
   protected static void propagate_all_lookaheads() throws internal_error
     {
       /* iterate across all states */
-      for (Enumeration st = all(); st.hasMoreElements(); )
+      for (Iterator st = all(); st.hasNext(); )
 	{
 	  /* propagate lookaheads out of that state */
-	  ((lalr_state)st.nextElement()).propagate_lookaheads();
+	  ((lalr_state)st.next()).propagate_lookaheads();
 	}
     }
 
@@ -281,7 +283,7 @@ public class lalr_state {
       symbol_set    outgoing;
       lalr_item     itm, new_itm, existing, fix_itm;
       symbol        sym, sym2;
-      Enumeration   i, s, fix;
+      Iterator  i, s, fix;
 
       /* sanity check */
       if (start_prod == null)
@@ -317,9 +319,9 @@ public class lalr_state {
 
 	  /* gather up all the symbols that appear before dots */
 	  outgoing = new symbol_set();
-	  for (i = st.items().all(); i.hasMoreElements(); )
+	  for (i = st.items().all(); i.hasNext(); )
 	    {
-	      itm = (lalr_item)i.nextElement();
+	      itm = (lalr_item)i.next();
 
 	      /* add the symbol before the dot (if any) to our collection */
 	      sym = itm.symbol_after_dot();
@@ -327,9 +329,9 @@ public class lalr_state {
 	    }
 
 	  /* now create a transition out for each individual symbol */
-	  for (s = outgoing.all(); s.hasMoreElements(); )
+	  for (s = outgoing.all(); s.hasNext(); )
 	    {
-	      sym = (symbol)s.nextElement();
+	      sym = (symbol)s.next();
 
 	      /* will be keeping the set of items with propagate links */
 	      linked_items = new lalr_item_set();
@@ -337,9 +339,9 @@ public class lalr_state {
 	      /* gather up shifted versions of all the items that have this
 		 symbol before the dot */
 	      new_items = new lalr_item_set();
-	      for (i = st.items().all(); i.hasMoreElements();)
+	      for (i = st.items().all(); i.hasNext();)
 		{
-		  itm = (lalr_item)i.nextElement();
+		  itm = (lalr_item)i.next();
 
 		  /* if this is the symbol we are working on now, add to set */
 		  sym2 = itm.symbol_after_dot();
@@ -378,9 +380,9 @@ public class lalr_state {
 	      else 
 		{
 		  /* walk through the items that have links to the new state */
-		  for (fix = linked_items.all(); fix.hasMoreElements(); )
+		  for (fix = linked_items.all(); fix.hasNext(); )
 		    {
-		      fix_itm = (lalr_item)fix.nextElement();
+		      fix_itm = (lalr_item)fix.next();
 
 		      /* look at each propagate link out of that item */
 		      for (int l =0; l < fix_itm.propagate_items().size(); l++)
@@ -421,8 +423,8 @@ public class lalr_state {
   protected void propagate_lookaheads() throws internal_error
     {
       /* recursively propagate out from each item in the state */
-      for (Enumeration itm = items().all(); itm.hasMoreElements(); )
-	((lalr_item)itm.nextElement()).propagate_lookaheads(null);
+      for (Iterator itm = items().all(); itm.hasNext(); )
+	((lalr_item)itm.next()).propagate_lookaheads(null);
     }
 
   /*. . . . . . . . . . . . . . . . . . . . . . . . . . . . . .*/
@@ -465,9 +467,9 @@ public class lalr_state {
       our_red_row = reduce_table.under_state[index()];
 
       /* consider each item in our state */
-      for (Enumeration i = items().all(); i.hasMoreElements(); )
+      for (Iterator i = items().all(); i.hasNext(); )
 	{
-	  itm = (lalr_item)i.nextElement();
+	  itm = (lalr_item)i.next();
 	 
 
 	  /* if its completed (dot at end) then reduce under the lookahead */
@@ -704,9 +706,9 @@ public class lalr_state {
       boolean      after_itm;
 
       /* consider each element */
-      for (Enumeration itms = items().all(); itms.hasMoreElements(); )
+      for (Iterator itms = items().all(); itms.hasNext(); )
 	{
-	  itm = (lalr_item)itms.nextElement();
+	  itm = (lalr_item)itms.next();
 
 	  /* clear the S/R conflict set for this item */
 
@@ -717,9 +719,9 @@ public class lalr_state {
 	      after_itm = false;
 
 	      /* compare this item against all others looking for conflicts */
-	      for (Enumeration comps = items().all(); comps.hasMoreElements(); )
+	      for (Iterator comps = items().all(); comps.hasNext(); )
 		{
-		  compare = (lalr_item)comps.nextElement();
+		  compare = (lalr_item)comps.next();
 
 		  /* if this is the item, next one is after it */
 		  if (itm == compare) after_itm = true;
@@ -806,9 +808,9 @@ public class lalr_state {
       System.err.println(red_itm.to_simple_string());
 
       /* find and report on all items that shift under our conflict symbol */
-      for (Enumeration itms = items().all(); itms.hasMoreElements(); )
+      for (Iterator itms = items().all(); itms.hasNext(); )
 	{
-	  itm = (lalr_item)itms.nextElement();
+	  itm = (lalr_item)itms.next();
 
 	  /* only look if its not the same item and not a reduce */
 	  if (itm != red_itm && !itm.dot_at_end())

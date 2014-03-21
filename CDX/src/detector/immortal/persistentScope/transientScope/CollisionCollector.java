@@ -1,8 +1,7 @@
 package immortal.persistentScope.transientScope;
 
-import javacp.util.ArrayList;
-import javacp.util.HashSet;
-import javacp.util.List;
+import javolution.util.FastSet;
+import javolution.util.FastTable;
 
 /**
  * Collects collisions in lists and then returns a list of collisions where
@@ -11,11 +10,17 @@ import javacp.util.List;
  */
 class CollisionCollector {
 	/** A hash set of collisions.  */
-	private HashSet collisions = new HashSet();
+	private FastSet collisions = new FastSet();
 
 	/** Add some collisions.  */
-	public void addCollisions(List collisions) { this.collisions.addAll(collisions); }
+	public void addCollisions(FastTable collisions) {
+		this.collisions.addAll(collisions); 
+	}
 
 	/** Get the list of collisions.   */
-	public ArrayList getCollisions() { return new ArrayList(collisions);  }
+	public FastTable getCollisions() {
+		FastTable table = new FastTable();
+		table.addAll(collisions);  
+		return table;
+	}
 }

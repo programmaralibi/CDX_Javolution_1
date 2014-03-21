@@ -20,8 +20,8 @@ public class MemoryArea extends MemoryAreaWrapper {
 
 	public static MemoryArea getMemoryArea(Object o) {
 		return new MemoryArea( javax.realtime.MemoryArea.getMemoryArea(o) );
-		// note that we cannot easily have a HashMap mapping RTSJ Area -> Wrapper Area,
-		// because of memory reference restrictions ... where would the HashMap live ?
+		// note that we cannot easily have a FastMap mapping RTSJ Area -> Wrapper Area,
+		// because of memory reference restrictions ... where would the FastMap live ?
 
 		// maybe we could instead somehow extend RTSJ areas to hold the reference to the
 		// Wrapper Area ; maybe it would confuse the RTSJ implementation, I don't know

@@ -7,7 +7,10 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.PrintWriter;
-import javacp.util.Enumeration;
+import java.util.Enumeration;
+import java.util.Iterator;
+
+import javolution.util.function.Iteration;
 
 /** This class serves as the main driver for the JavaCup system.
  *  It accepts user options and coordinates overall control flow.
@@ -465,9 +468,9 @@ public class Main {
       non_terminal nt;
 
       /* check for unused terminals */
-      for (Enumeration t = terminal.all(); t.hasMoreElements(); )
+      for (Iterator t = terminal.all(); t.hasNext(); )
 	{
-	  term = (terminal)t.nextElement();
+	  term = (terminal)t.next();
 
 	  /* don't issue a message for EOF */
 	  if (term == terminal.EOF) continue;
@@ -490,9 +493,9 @@ public class Main {
 	}
 
       /* check for unused non terminals */
-      for (Enumeration n = non_terminal.all(); n.hasMoreElements(); )
+      for (Iterator n = non_terminal.all(); n.hasNext(); )
 	{
-	  nt = (non_terminal)n.nextElement();
+	  nt = (non_terminal)n.next();
 
 	  /* is this one unused */
 	  if (nt.use_count() == 0)
@@ -562,9 +565,9 @@ public class Main {
 	System.err.println("  Filling in tables...");
       action_table = new parse_action_table();
       reduce_table = new parse_reduce_table();
-      for (Enumeration st = lalr_state.all(); st.hasMoreElements(); )
+      for (Iterator st = lalr_state.all(); st.hasNext(); )
 	{
-	  lalr_state lst = (lalr_state)st.nextElement();
+	  lalr_state lst = (lalr_state)st.next();
 	  lst.build_table_entries(
 			                      action_table, reduce_table);
 	}
@@ -829,9 +832,9 @@ public class Main {
       lalr_state ordered[] = new lalr_state[lalr_state.number()];
 
       /* put the states in sorted order for a nicer display */
-      for (Enumeration s = lalr_state.all(); s.hasMoreElements(); )
+      for (Iterator s = lalr_state.all(); s.hasNext(); )
 	{
-	  lalr_state st = (lalr_state)s.nextElement();
+	  lalr_state st = (lalr_state)s.next();
 	  ordered[st.index()] = st;
 	}
 

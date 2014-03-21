@@ -20,7 +20,7 @@ import realtime.ImmortalMemory;
  */
 public class Main {
 
-	public static final boolean PRINT_RESULTS = false;
+	public static final boolean PRINT_RESULTS = true;
 
 	public static Object junk;
 

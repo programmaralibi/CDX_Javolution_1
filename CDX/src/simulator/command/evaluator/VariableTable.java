@@ -1,6 +1,7 @@
 package command.evaluator;
-import javacp.util.Hashtable;
-import javacp.util.Stack;
+import java.util.Stack;
+
+import javolution.util.FastMap;
 
 public class VariableTable
 {
@@ -10,12 +11,12 @@ public class VariableTable
 	public static final int TYPE_MATRIX = 4;
 	
 	private int currentLevel;
-	private Hashtable table;
+	private FastMap table;
 	private Stack levelPointers;
 	
 	public VariableTable()
 	{
-		table = new Hashtable();
+		table = new FastMap();
 		levelPointers = new Stack();
 		currentLevel = -1; //this way levelPointers.elementAt(i) = pointer to first item at level i
 						   //start at level 0 (begin scope increments level to 0)
@@ -190,7 +191,7 @@ public class VariableTable
 		{
 			if(curVar.nextWithSameName != null)
 			{
-				//hashtable was pointing to this entry;
+				//FastTable was pointing to this entry;
 				//overwrite previous entry with the next item with same name
 				table.put(curVar.name,curVar.nextWithSameName);
 			}

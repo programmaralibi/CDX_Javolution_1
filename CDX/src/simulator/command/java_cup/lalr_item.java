@@ -1,6 +1,7 @@
 package command.java_cup;
 
-import javacp.util.Stack;
+import java.util.Stack;
+
 
 /** This class represents an LALR item. Each LALR item consists of 
  *  a production, a "dot" at a position within that production, and

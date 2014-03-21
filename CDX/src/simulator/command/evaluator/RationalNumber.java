@@ -1,5 +1,5 @@
 package command.evaluator;
-import javacp.util.StringTokenizer;
+import java.util.StringTokenizer;
 
 public class RationalNumber extends RealNumber
 {

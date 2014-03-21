@@ -1,9 +1,10 @@
 package command.java_cup;
 
 import java.io.PrintWriter;
-import javacp.util.Stack;
-import javacp.util.Enumeration;
 import java.util.Date;
+import java.util.Iterator;
+import java.util.Iterator;
+import java.util.Stack;
 
 /** 
  * This class handles emitting generated code for the resulting parser.
@@ -270,9 +271,9 @@ public class emit {
       out.println("  /* terminals */");
 
       /* walk over the terminals */              /* later might sort these */
-      for (Enumeration e = terminal.all(); e.hasMoreElements(); )
+      for (Iterator e = terminal.all(); e.hasNext(); )
 	{
-	  term = (terminal)e.nextElement();
+	  term = (terminal)e.next();
 
 	  /* output a constant decl for the terminal */
 	  out.println("  public static final int " + term.name() + " = " + 
@@ -286,9 +287,9 @@ public class emit {
           out.println("  /* non terminals */");
 
           /* walk over the non terminals */       /* later might sort these */
-          for (Enumeration e = non_terminal.all(); e.hasMoreElements(); )
+          for (Iterator e = non_terminal.all(); e.hasNext(); )
 	    {
-	      nt = (non_terminal)e.nextElement();
+	      nt = (non_terminal)e.next();
     
 	      /* output a constant decl for the terminal */
 	      out.println("  static final int " + nt.name() + " = " + 
@@ -365,9 +366,9 @@ public class emit {
       out.println("        {");
 
       /* emit action code for each production as a separate case */
-      for (Enumeration p = production.all(); p.hasMoreElements(); )
+      for (Iterator p = production.all(); p.hasNext(); )
 	{
-	  prod = (production)p.nextElement();
+	  prod = (production)p.next();
 
 	  /* case label */
           out.println("          /*. . . . . . . . . . . . . . . . . . . .*/");
@@ -492,9 +493,9 @@ public class emit {
 
       /* collect up the productions in order */
       all_prods = new production[production.number()];
-      for (Enumeration p = production.all(); p.hasMoreElements(); )
+      for (Iterator p = production.all(); p.hasNext(); )
 	{
-	  prod = (production)p.nextElement();
+	  prod = (production)p.next();
 	  all_prods[prod.index()] = prod;
 	}
 

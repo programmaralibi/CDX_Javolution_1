@@ -1,8 +1,7 @@
 package immortal.persistentScope;
 
+import javolution.util.FastMap;
 import realtime.MemoryArea;
-
-import javacp.util.HashMap;
 
 /**
  * The instance lives and the constructor runs in the persistent detector scope.
@@ -20,7 +19,7 @@ public class StateTable {
     private int usedVectors;
 
     /** Mapping Aircraft -> Vector3d. */
-    final private HashMap motionVectors = new HashMap();
+    final private FastMap motionVectors = new FastMap();
 
 
     StateTable() {

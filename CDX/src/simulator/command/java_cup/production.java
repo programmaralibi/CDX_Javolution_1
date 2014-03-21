@@ -1,8 +1,9 @@
 
 package command.java_cup;
 
-import javacp.util.Hashtable;
-import javacp.util.Enumeration;
+import java.util.Iterator;
+
+import javolution.util.FastMap;
 
 /** This class represents a production in the grammar.  It contains
  *  a LHS non terminal, and an array of RHS symbols.  As various 
@@ -220,10 +221,10 @@ public class production {
   /** Table of all productions.  Elements are stored using their index as 
    *  the key.
    */
-  protected static Hashtable _all = new Hashtable();
+  protected static FastMap _all = new FastMap();
  
   /** Access to all productions. */
-  public static Enumeration all() {return _all.elements();}
+  public static Iterator all() {return _all.entrySet().iterator();}
 
     /** Lookup a production by index. */
   public static production find(int indx) {
